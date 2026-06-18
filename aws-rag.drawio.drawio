@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="k-6nIyCM5I0O0gefEGQd">
+    <mxGraphModel dx="2191" dy="847" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vpc" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=30;fontStyle=1;fontSize=14;strokeColor=#232F3E;fillColor=none;dashed=0;" value="VPC" vertex="1">
+          <mxGeometry height="820" width="1480" x="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="shape=umlActor;whiteSpace=wrap;html=1;fontSize=12;verticalLabelPosition=bottom;verticalAlign=top;" value="User&#xa;(free public reg.)" vertex="1">
+          <mxGeometry height="80" width="40" x="-40" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="widget" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFFFFF;strokeColor=#232F3E;" value="React Chat Widget&#xa;(starts in docs; expands app-wide)" vertex="1">
+          <mxGeometry height="80" width="150" x="130" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="igw" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet_gateway;" value="Internet Gateway" vertex="1">
+          <mxGeometry height="60" width="60" x="360" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#F58534;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.application_load_balancer;" value="ALB + WAF&lt;br&gt;Rate limiting (per IP)&lt;br&gt;bot/DDoS protection" vertex="1">
+          <mxGeometry height="60" width="60" x="480" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="django" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;fontColor=#FFFFFF;fontStyle=1;strokeColor=none;" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Django RAG Service (/ask)&lt;br&gt;per-user rate limit + usage cap&lt;br&gt;orchestrates embed → retrieve → generate&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="200" x="630" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="vector" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fontSize=10;fillColor=none;strokeColor=none;fontStyle=1;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;Vector Index (pgvector)&lt;br&gt;Demo: file-based (FAISS/Chroma)&lt;br&gt;Prod: pgvector on ECS Postgres" vertex="1">
+          <mxGeometry height="110" width="190" x="1220" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="guardrail" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;strokeColor=#D62728;dashed=1;fontStyle=1;verticalAlign=top;fontColor=#D62728;" value="Bedrock Guardrails (checks input + output)" vertex="1">
+          <mxGeometry height="180" width="240" x="1380" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="bedrock" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=none;fontColor=#000000;fontStyle=1;strokeColor=none;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;Amazon Bedrock&lt;br&gt;— Titan (embeddings)&lt;br&gt;— Claude (generation)" vertex="1">
+          <mxGeometry height="100" width="200" x="1400" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ingest" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFFFFF;strokeColor=#1F77B4;dashed=1;" value="Docs Ingestion Job in Django svc&lt;br&gt;(one-time / on docs update)&lt;div&gt;scheduled on doc update&lt;br&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; white-space: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20parent%3D%221%22%20style%3D%22rounded%3D1%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3BfontSize%3D11%3BfillColor%3D%23FFFFFF%3BstrokeColor%3D%231F77B4%3Bdashed%3D1%3B%22%20value%3D%22Docs%20Ingestion%20Job%26%2310%3B(one-time%20%2F%20on%20docs%20update)%22%20vertex%3D%221%22%3E%3CmxGeometry%20height%3D%2260%22%20width%3D%22190%22%20x%3D%22900%22%20y%3D%22138%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;br&gt;scheduled / on docs change&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="1076" y="168" as="geometry" />
+        </mxCell>
+        <mxCell id="cPg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#FFF2E6;strokeColor=#FF9900;align=center;" value="No new database — pgvector is a Postgres extension." vertex="1">
+          <mxGeometry height="50" width="190" x="600" y="775" as="geometry" />
+        </mxCell>
+        <mxCell id="cCost" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FF9900;fontColor=#FFFFFF;fontStyle=1;align=center;" value="~$60 / event (est.) • ~$0 vector store to start" vertex="1">
+          <mxGeometry height="60" width="220" x="1200" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="cSafe" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#FFF6E0;strokeColor=#FF9900;align=center;" value="Free public event → safeguards: rate limiting (spam &amp; cost) + Bedrock Guardrails (content safety, PII, on-topic, anti-jailbreak)." vertex="1">
+          <mxGeometry height="80" width="280" x="860" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" target="widget" value="asks a question">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="widget" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" target="igw" value="HTTPS /ask">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2b" edge="1" parent="1" source="igw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" target="alb" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2c" edge="1" parent="1" source="alb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" target="django" value="routed to ECS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="8GndnygLBg9SclneiAOy-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#3F9D7C;" target="8GndnygLBg9SclneiAOy-1" value="1. embed query (Titan)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1500" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="django" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;exitX=1;exitY=0.35;exitDx=0;exitDy=0;" value="2. search by embedding">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1025" y="367" />
+              <mxPoint x="1025" y="410" />
+              <mxPoint x="1220" y="410" />
+              <mxPoint x="1220" y="439" />
+            </Array>
+            <mxPoint x="1256" y="439" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;dashed=1;" target="django" value="3. returns matching chunks">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="462" />
+            </Array>
+            <mxPoint x="1256" y="462" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="django" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="guardrail" value="4. prompt + chunks (Claude, via Guardrails)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="bedrock" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;strokeColor=#FF9900;" target="widget" value="5. grounded answer + citation (return, post-Guardrails)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1500" y="560" />
+              <mxPoint x="225" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i1" edge="1" parent="1" source="x5GW3sXblFvjlCizZT9m-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;strokeColor=#1F77B4;exitX=1;exitY=0.25;exitDx=0;exitDy=0;exitPerimeter=0;" target="8GndnygLBg9SclneiAOy-1" value="embed docs (Titan)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i2" edge="1" parent="1" source="x5GW3sXblFvjlCizZT9m-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;strokeColor=#1F77B4;" value="write vectors (one-time)">
+          <mxGeometry relative="1" x="-0.2183" y="-5" as="geometry">
+            <mxPoint y="1" as="offset" />
+            <Array as="points" />
+            <mxPoint x="1295" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GndnygLBg9SclneiAOy-1" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#01A88D;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="1461" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="8GndnygLBg9SclneiAOy-2" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecs;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="691" y="272" as="geometry" />
+        </mxCell>
+        <mxCell id="8GndnygLBg9SclneiAOy-4" parent="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="&lt;li class=&quot;font-claude-response-body whitespace-normal break-words pl-2&quot;&gt;🔢 Django sends the question to &lt;strong&gt;Titan&lt;/strong&gt; (in Bedrock) → gets the query embedding.&lt;/li&gt;&lt;br&gt;&lt;li class=&quot;font-claude-response-body whitespace-normal break-words pl-2&quot;&gt;🔍 Django searches &lt;strong&gt;pgvector&lt;/strong&gt; with that embedding.&lt;/li&gt;&lt;br&gt;&lt;li class=&quot;font-claude-response-body whitespace-normal break-words pl-2&quot;&gt;📤 pgvector &lt;strong&gt;returns the matching chunks&lt;/strong&gt; to Django.&lt;/li&gt;&lt;br&gt;&lt;li class=&quot;font-claude-response-body whitespace-normal break-words pl-2&quot;&gt;📝 Django sends &lt;strong&gt;prompt + chunks&lt;/strong&gt; to &lt;strong&gt;Claude&lt;/strong&gt; (in Bedrock, via Guardrails).&lt;/li&gt;&lt;br&gt;&lt;li class=&quot;font-claude-response-body whitespace-normal break-words pl-2&quot;&gt;✅ Claude returns the &lt;strong&gt;grounded answer + citation&lt;/strong&gt; (post-Guardrails) → back to the user.&lt;br&gt;&lt;br&gt;&lt;/li&gt;&lt;li class=&quot;font-claude-response-body whitespace-normal break-words pl-2&quot;&gt;&lt;br&gt;&lt;/li&gt;&lt;li class=&quot;font-claude-response-body whitespace-normal break-words pl-2&quot;&gt;IGW + ALB/WAF in a public subnet, Django + Postgres + (Bedrock via VPC endpoint) in a private subnet = a textbook secure VPC.&lt;/li&gt;" vertex="1">
+          <mxGeometry height="220" width="490" x="300" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="8GndnygLBg9SclneiAOy-5" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.rds_postgresql_instance;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="1260" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="x5GW3sXblFvjlCizZT9m-1" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecs;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="1112" y="72" as="geometry" />
+        </mxCell>
+        <mxCell id="x5GW3sXblFvjlCizZT9m-10" edge="1" parent="1" source="x5GW3sXblFvjlCizZT9m-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="x5GW3sXblFvjlCizZT9m-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x5GW3sXblFvjlCizZT9m-2" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="900" y="81" as="geometry" />
+        </mxCell>
+        <mxCell id="x5GW3sXblFvjlCizZT9m-5" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="691" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x5GW3sXblFvjlCizZT9m-6" edge="1" parent="1" source="x5GW3sXblFvjlCizZT9m-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="x5GW3sXblFvjlCizZT9m-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x5GW3sXblFvjlCizZT9m-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Docs Source (S3)" vertex="1">
+          <mxGeometry height="30" width="89" x="676.5" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="x5GW3sXblFvjlCizZT9m-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Ingestion Trigger (EventBridge)" vertex="1">
+          <mxGeometry height="30" width="100" x="900" y="168" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
